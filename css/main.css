@@ -105,7 +105,7 @@ a {
   content: "";
   width: 800px;
   aspect-ratio: 1;
-  background-image: url(../images/splash01.png);
+  background-image: url(../images/splash01.webp);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
