@@ -1,31 +1,131 @@
-html,
-body {
-  box-sizing: border-box;
-  height: 100%;
+:root {
+  --body-text-color: #121212;
+  --body-bg-color: #fefefe;
+  --body-font-family: Lato, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --body-font-weight: 400;
+  --body-font-size: 1rem;
+  --body-line-height: 1.5;
+  --heading-font-family: inherit;
+  --heading-font-weight: 700;
+  --heading-line-height: 1.2;
+  --heading-margin-bottom: 0.8em;
+  --h1-font-size: clamp(2rem, 1.834rem + 0.75vw, 2.5rem);
+  --h2-font-size: clamp(1.75rem, 1.584rem + 0.75vw, 2.25rem);
+  --h3-font-size: clamp(1.125rem, 1rem + 0.56vw, 1.5rem);
+  --h4-font-size: clamp(1.125rem, 1.084rem + 0.19vw, 1.25rem);
+  --h5-font-size: clamp(1rem, 0.959rem + 0.19vw, 1.125rem);
+  --h6-font-size: 1rem;
 }
 
-*,
-*::before,
-*::after {
+.popup {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  overflow: hidden;
+}
+
+.popup.open {
+  width: auto;
+  height: auto;
+  margin: initial;
+  white-space: normal;
+  -webkit-clip-path: initial;
+          clip-path: initial;
+  overflow: initial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font-family), sans-serif;
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-line-height);
+}
+
+body, p, :where(p, h1, h2, h3, h4, h5, h6, ul, ol, dl, blockquote, figure):where([class]) {
+  margin-block: 0;
+}
+
+body, :where(blockquote, figure):where([class]) {
+  margin-inline: 0;
+}
+
+html, :has(:target) {
+  scroll-behavior: smooth;
+}
+
+img, video, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  scrollbar-gutter: stable;
+}
+
+body {
+  min-height: 100%;
+  box-sizing: border-box;
+  background: var(--body-bg-color);
+  color: var(--body-text-color);
+  font-family: var(--body-font-family), sans-serif;
+  font-weight: var(--body-font-weight);
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+}
+
+*, *::before, *::after {
   box-sizing: inherit;
 }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
-html,
-:has(:target) {
-  scroll-behavior: smooth;
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+}
+
+h5 {
+  font-size: var(--h5-font-size);
+}
+
+h6 {
+  font-size: var(--h6-font-size);
+}
+
+p {
+  --paragraphMarginBottom: 1rem;
+}
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
 }
 
 :where(ul, ol):where([class]) {
   padding-left: 0;
-}
-
-body,
-:where(blockquote, figure):where([class]) {
-  margin: 0;
-}
-
-:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
-  margin-block: 0;
 }
 
 :where(dd[class]) {
@@ -42,18 +142,18 @@ body,
   list-style: none;
 }
 
-p {
-  margin-block: 0;
-}
-p:where(:not([class]):not(:last-child)) {
-  margin-bottom: var(--paragraph-mb);
+:where(address[class]) {
+  font-style: normal;
 }
 
-img,
-svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
+svg * {
+  transition-property: fill, stroke;
+}
+svg [fill] {
+  fill: currentColor;
+}
+svg [stroke] {
+  stroke: currentColor;
 }
 
 input,
@@ -63,20 +163,20 @@ button {
   font: inherit;
 }
 
-svg *[fill] {
-  fill: currentColor;
-}
-svg *[stroke] {
-  stroke: currentColor;
-}
-svg * {
-  transition-property: fill, stroke;
+a:where([class]) {
+  display: inline-flex;
 }
 
-body {
-  font-family: Lato, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+button, label {
+  cursor: pointer;
 }
 
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/*  buttons */
 a {
   color: red;
 }
@@ -88,6 +188,7 @@ a {
 }
 
 .page-wrapper {
+  position: relative;
   overflow-x: hidden;
   height: 100%;
   display: flex;
@@ -208,28 +309,15 @@ a {
   margin-inline: auto;
 }
 
-.popup {
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-.popup.open, .popup__overlay {
-  position: absolute;
+.popup.open {
   top: 0;
   left: 0;
-  width: 100%;
-  min-height: 100%;
-}
-.popup.open {
   z-index: 10;
-  visibility: initial;
-  opacity: 1;
-  height: auto;
+  position: fixed;
+  height: 100vh;
 }
 .popup__overlay {
+  position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 11;
 }
@@ -266,4 +354,6 @@ a {
 }
 .popup__close:hover {
   opacity: 1;
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*   _shame.scss *//*# sourceMappingURL=main.css.map */
