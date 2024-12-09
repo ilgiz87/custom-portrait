@@ -44,6 +44,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font-family), sans-serif;
   font-weight: var(--heading-font-weight);
   line-height: var(--heading-line-height);
+  margin-block-start: 1em;
+  margin-block-end: 0.5em;
 }
 
 body, p, :where(p, h1, h2, h3, h4, h5, h6, ul, ol, dl, blockquote, figure):where([class]) {
@@ -52,6 +54,14 @@ body, p, :where(p, h1, h2, h3, h4, h5, h6, ul, ol, dl, blockquote, figure):where
 
 body, :where(blockquote, figure):where([class]) {
   margin-inline: 0;
+}
+
+.open .popup__overlay {
+  height: 100%;
+}
+
+.popup.open, .open .popup__overlay {
+  width: 100%;
 }
 
 html, :has(:target) {
@@ -190,7 +200,7 @@ a {
 .page-wrapper {
   position: relative;
   overflow-x: hidden;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background: radial-gradient(290% 100% at 50% 0%, rgb(237, 222, 205) 1.7%, rgb(229, 213, 203) 27.7%, rgb(222, 205, 202) 42%, rgb(180, 156, 192) 87%), linear-gradient(90deg, #b991b5 0%, #ada4c9 100%);
@@ -284,10 +294,23 @@ a {
   padding: 0.5em 1em;
   position: relative;
   z-index: 2;
+  transition-duration: 0.3s;
 }
 .wa-link svg {
   width: 2.5em;
   aspect-ratio: 1;
+}
+@media (hover: hover) {
+  .wa-link:hover {
+    scale: 1.05;
+    box-shadow: 0px 2px 4px 4px rgba(0, 0, 255, 0.1);
+  }
+}
+@media (hover: none) {
+  .wa-link:active {
+    scale: 1.05;
+    box-shadow: 0px 2px 4px 4px rgba(0, 0, 255, 0.1);
+  }
 }
 
 .footer {
@@ -336,6 +359,9 @@ a {
 }
 .open .popup__window li {
   margin-bottom: 1em;
+}
+.popup__heading {
+  margin-top: 0;
 }
 .popup__content {
   overflow-y: scroll;

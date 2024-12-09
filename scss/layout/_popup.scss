@@ -5,6 +5,7 @@
 
     &.open {
         @extend %visually-un-hidden;
+        @extend %w100 !optional;
 
         top: 0;
         left: 0;
@@ -19,12 +20,18 @@
         position: absolute;
         background-color: rgba(0, 0, 0, .6);
         z-index: 11;
+
+        .open & {
+
+            @extend %w100 !optional;
+            @extend %h100 !optional;
+            
+        }
+
     }
 
     &__window {
         .open & {
-
-
             width: calc(100% - 64px);
             max-width: 900px;
             padding: 32px;
@@ -45,7 +52,10 @@
             }
         }
     }
+    &__heading{
+        margin-top: 0;
 
+}
     &__content {
         overflow-y: scroll;
         height: 100%;

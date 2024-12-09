@@ -25,6 +25,8 @@
   font-family: var(--heading-font-family), sans-serif;
   font-weight: var(--heading-font-weight);
   line-height: var(--heading-line-height);
+  margin-block-start: 1em;
+  margin-block-end: .5em;
 }
 
 %margin-block-0 {
@@ -42,6 +44,14 @@
 
 %min-h100 {
   min-height: 100%;
+}
+
+%h100 {
+  height: 100%;
+}
+
+%w100 {
+  width: 100%;
 }
 
 // Плавный скролл

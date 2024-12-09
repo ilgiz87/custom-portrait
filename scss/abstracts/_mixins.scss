@@ -24,3 +24,18 @@
     --h5-font-size: #{functions.clamp1(variables.$h5-fs-min, variables.$h5-fs-max)};
     --h6-font-size: #{functions.clamp1(variables.$h6-fs-min, variables.$h6-fs-max)};
   }
+
+  @mixin hover {
+    @media (hover: hover) {
+      &:hover {
+        @content;
+      }
+    }
+  
+    @media (hover: none) {
+      &:active {
+        @content;
+      }
+  
+    }
+  }
