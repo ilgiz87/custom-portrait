@@ -1,7 +1,8 @@
 @use '../abstracts/mixins';
+@use '../abstracts/functions';
 
 a {
-  color: red;
+  color: #f73f07;
 }
 
 .container {
@@ -44,8 +45,7 @@ a {
   &__heading {
     text-transform: uppercase;
     text-align: center;
-    // font-size: 40px;
-    font-size: clamp(2rem, 1.1667rem + 3.7037vw, 2.5rem);
+    font-size: functions.clamp1(32, 40);
   }
 
   &__img {
@@ -65,7 +65,7 @@ a {
     // bottom: 13.3%;
     left: 30%;
 
-    font-size: clamp(0.8125rem, 0.5rem + 1.3889vw, 1rem);
+    font-size: functions.clamp1(13, 16);
 
     line-height: 1.15;
     font-weight: 600;

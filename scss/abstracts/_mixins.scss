@@ -5,7 +5,7 @@
 @mixin normalize-root() {
     --body-text-color: #{variables.$body-text-color};
     --body-bg-color: #{variables.$body-bg-color};
-    --body-font-family: #{variables.$body-font-family};
+    --body-font-family: "#{variables.$body-font-family}";
     --body-font-weight: #{variables.$body-font-weight};
     --body-font-size: #{functions.toRem(variables.$body-font-size)};
     --body-line-height: #{variables.$body-line-height};

@@ -22,10 +22,9 @@
         z-index: 11;
 
         .open & {
-
             @extend %w100 !optional;
             @extend %h100 !optional;
-            
+
         }
 
     }
@@ -52,10 +51,12 @@
             }
         }
     }
-    &__heading{
+
+    &__heading {
         margin-top: 0;
 
-}
+    }
+
     &__content {
         overflow-y: scroll;
         height: 100%;
